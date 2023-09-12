@@ -23,7 +23,7 @@ if args.version == 'v5':
         command = f"python models/yolov5/detect.py --weights models/yolov5/runs/train/exp/weights/best.pt --source {args.dataset}/test/images  --img 640 --conf 0.4"
     else:
         command = f"python models/yolov5/val.py --weights models/yolov5/runs/train/exp/weights/best.pt --data {args.dataset} --imgsz 640 --task val"
-else
+else:
     print("Not yet implemented")
 
 # Execute the corresponding YOLO command
