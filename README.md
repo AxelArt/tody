@@ -7,7 +7,7 @@ Run the following commands on your Colab notebook
 git submodule init
 git submodule update
 
-Install dependenciesfor YOLOv5
+Install dependencies for YOLOv5
 pip install -qr models/yolov5/requirements.txt roboflow 
 
 Run the train using YOLOv5
