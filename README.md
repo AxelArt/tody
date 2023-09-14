@@ -19,7 +19,11 @@ git submodule update
 
 Install dependencies for YOLOv5
 
+<<<<<<< HEAD
 ```commandline
+=======
+Install dependencies for YOLOv5
+>>>>>>> 0738cb1c15cb3e68b6d43efd4964e2496c9b4af7
 pip install -qr models/yolov5/requirements.txt roboflow 
 ```
 
