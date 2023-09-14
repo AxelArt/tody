@@ -2,6 +2,8 @@
 
 A tool for object detection using YOLO models
 
+---
+
 ## Preliminary steps
 
 Clone the project
@@ -19,18 +21,42 @@ git submodule update
 
 Install dependencies for YOLOv5
 
-<<<<<<< HEAD
 ```commandline
-=======
-Install dependencies for YOLOv5
->>>>>>> 0738cb1c15cb3e68b6d43efd4964e2496c9b4af7
 pip install -qr models/yolov5/requirements.txt roboflow 
 ```
 
 Start training process using YOLOv5
 
 ```commandline
+python yolo_manager.py --help
+usage: python yolo_manager.py [-h] --dataset DATASET [--mode {train,test,validation}] [--img {generic,apk}] [-p PERCENTAGE] [-v]
+
+Tool for Object Detection using YOLO
+
+optional arguments:
+  -h, --help            show this help message and exit
+
+Arguments:
+  --dataset DATASET
+                    The dataset path
+                        
+  --version {'v5', 'v6', 'v7', 'v8'}
+  --mode {train,test,validation}
+  --img IMAGE_SIZE
+                    FORMAT ACCEPTED = S
+  --batch BATCH_SIZE
+  --epochs EPOCHS
+                number of epochs
+  
+```
+Example:
+```
 python yolo_manager.py --version v5 --mode train --dataset /content/tody/yolov5/data/coco.yaml --epochs 30 --img 640
 ```
+
+### Acknowledgements
+
+The authors would like to thank the 'Trust, Security and Privacy' research group within the 
+[Institute of Informatics and Telematics](https://www.iit.cnr.it/) (CNR - Pisa, Italy), which support their research.
 
  
