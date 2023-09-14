@@ -4,18 +4,20 @@ import subprocess
 
 
 # Define the command-line arguments
-parser = argparse.ArgumentParser(description='YOLOv5 and YOLOv6 manager')
-parser.add_argument('--version', type=str, choices=['v5', 'v6', 'v7', 'v8'], required=True,
+parser = argparse.ArgumentParser(prog="python yolo_manager.py", description='A Tool for Object Detection using YOLO')
+# REQUIRED Arguments
+parser.add_argument('--v', '--version', type=int, choices=['5', '6', '7', '8'], required=True,
                     help='The YOLO version to use')
 parser.add_argument('--mode', type=str, choices=['train', 'test', 'validation'], required=True,
                     help='The mode to run')
-parser.add_argument('--dataset', type=str, required=True,
-                    help='The path to the custom dataset')
-parser.add_argument('--img', type=int, required=True,
+parser.add_argument('--img','--image_size', type=int, required=True,
                     help='Image size')
-parser.add_argument('--batch', type=int, required=True,
+# OPTIONAL Arguments
+parser.add_argument('--d', '--dataset', type=str, required=False, default='datasets',
+                    help='The path to the custom dataset')
+parser.add_argument('--b', '--batch', type=int, required=False, default=16,
                     help='The batch size')
-parser.add_argument('--epochs', type=int, required=True,
+parser.add_argument('--e', '--epochs', type=int, required=False, default=50,
                     help='Number of epochs')
 
 # Parse the command-line arguments
