@@ -29,7 +29,6 @@ Start training process using YOLOv5
 
 ```commandline
 python yolo_manager.py --help
-usage: python yolo_manager.py [-h] --dataset DATASET [--mode {train,test,validation}] [--img {generic,apk}] [-p PERCENTAGE] [-v]
 
 Tool for Object Detection using YOLO
 
@@ -56,7 +55,7 @@ python yolo_manager.py --version v5 --mode train --dataset /content/tody/yolov5/
 
 ### Acknowledgements
 
-The authors would like to thank the 'Trust, Security and Privacy' research group within the 
-[Institute of Informatics and Telematics](https://www.iit.cnr.it/) (CNR - Pisa, Italy), which support their research.
+This work has been carried out within the Italian National Doctorate on Artificial Intelligence run by the Sapienza University of Rome in collaboration with the Institute of Informatics and Telematics (IIT), the National Research Council of Italy (CNR).
+
 
  
