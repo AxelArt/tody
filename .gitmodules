@@ -4,3 +4,6 @@
 [submodule "models/yolov6"]
 	path = models/yolov6
 	url = https://github.com/meituan/YOLOv6.git
+[submodule "models/yolov7"]
+	path = models/yolov7
+	url = https://github.com/WongKinYiu/yolov7
