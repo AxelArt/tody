@@ -6,7 +6,7 @@ import subprocess
 # Define the command-line arguments
 parser = argparse.ArgumentParser(prog="python yolo_manager.py", description='A Tool for Object Detection using YOLO')
 # REQUIRED Arguments
-parser.add_argument('--version', type=str, choices=['v5','v6'], required=True,
+parser.add_argument('--version', type=str, choices=['v5','v6','v7'], required=True,
                     help='The YOLO version to use')
 parser.add_argument('--mode', type=str, choices=['train', 'test', 'validation'], required=True,
                     help='The mode to run')
@@ -22,6 +22,8 @@ parser.add_argument('--epochs', type=int, required=False, default=50,
 parser.add_argument('--conf', type=float, required=False, default=0.2,
                     help='')
 parser.add_argument('--source', type=str, required=False,
+                    help='')
+parser.add_argument('--weights', type=str, required=False,
                     help='')
 # Parse the command-line arguments
 args = parser.parse_args()
@@ -45,9 +47,9 @@ elif args.version == 'v7':
     if args.mode == 'train':
         command = f"python models/yolov7/train.py --img-size {args.img} --batch-size {args.batch} --epochs {args.epochs} --data {args.dataset} --weights models/yolov7/yolov7_training.pt"
     elif args.mode == 'test':
-        command = f"python models/yolov7/detect.py --weights models/yolov7/runs/train/exp/weights/best.pt --source {dataset.location}/test/images --conf {args.conf}"
+        command = f"python models/yolov7/test.py --weights {args.weights} --data {args.source} --conf {args.conf}"
     else:
-        command = f"python models/yolov7/detect.py --weights models/yolov7/runs/train/exp/weights/best.pt --source {args.dataset} --conf {args.conf}"     
+        command = f"python models/yolov7/detect.py --weights {args.weights} --source {args.source} --conf {args.conf}"     
 else:
     print("Please choose among v5, v6, v7 and v8")
 
