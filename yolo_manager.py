@@ -1,16 +1,14 @@
- 
 import argparse
 import subprocess
-
 
 # Define the command-line arguments
 parser = argparse.ArgumentParser(prog="python yolo_manager.py", description='A Tool for Object Detection using YOLO')
 # REQUIRED Arguments
-parser.add_argument('--version', type=str, choices=['v5','v6','v7'], required=True,
+parser.add_argument('--version', type=str, choices=['v5', 'v6', 'v7', 'v8'], required=True,
                     help='The YOLO version to use')
-parser.add_argument('--mode', type=str, choices=['train', 'test', 'validation'], required=True,
+parser.add_argument('--mode', type=str, choices=['train', 'test', 'val'], required=True,
                     help='The mode to run')
-parser.add_argument('--img','--image_size', type=int, required=True,
+parser.add_argument('--img', '--image_size', type=int, required=True,
                     help='Image size')
 # OPTIONAL Arguments
 parser.add_argument('--dataset', type=str, required=False, default='datasets',
@@ -40,16 +38,23 @@ elif args.version == 'v6':
     if args.mode == 'train':
         command = f"python models/yolov6/tools/train.py --img-size {args.img} --batch {args.batch} --epochs {args.epochs} --data {args.dataset} --conf configs/yolov6s.py"
     elif args.mode == 'test':
-        command = f"python models/yolov6/tools/infer.py --yaml {args.dataset} --weights models/yolov6/runs/train/exp/weights/best_ckpt.pt --source {args.source}  --img-size {args.img}"
+        command = f"python models/yolov6/tools/infer.py --yaml {args.dataset} --weights {args.weight} --source {args.source}  --img-size {args.img}"
     else:
-        command = f"python models/yolov6/tools/eval.py --weights models/yolov6/runs/train/exp/weights/best_ckpt.pt --data {args.dataset} --img-size {args.img}"
+        command = f"python models/yolov6/tools/eval.py --weights {args.weight} --data {args.dataset} --img-size {args.img}"
 elif args.version == 'v7':
     if args.mode == 'train':
         command = f"python models/yolov7/train.py --img-size {args.img} --batch-size {args.batch} --epochs {args.epochs} --data {args.dataset} --weights models/yolov7/yolov7_training.pt"
     elif args.mode == 'test':
         command = f"python models/yolov7/test.py --weights {args.weights} --data {args.source} --conf {args.conf}"
     else:
-        command = f"python models/yolov7/detect.py --weights {args.weights} --source {args.source} --conf {args.conf}"     
+        command = f"python models/yolov7/detect.py --weights {args.weights} --source {args.source} --conf {args.conf}"
+elif args.version == 'v8':
+    if args.mode == 'train':
+        command = f"yolo task=detect mode=train model=yolov8s.pt data={args.dataset} epochs={args.epochs} imgsz={args.img} plots=True"
+    elif args.mode == 'test':
+        command = f"yolo task=detect mode=predict model={args.weights} conf={args.conf} source={args.source}"
+    else:
+        command = f"yolo task=detect mode=val model={args.weights} data={args.dataset}"
 else:
     print("Please choose among v5, v6, v7 and v8")
 
