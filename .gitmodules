@@ -7,3 +7,6 @@
 [submodule "models/yolov7"]
 	path = models/yolov7
 	url = https://github.com/WongKinYiu/yolov7
+[submodule "models/yolov8"]
+	path = models/yolov8
+	url = https://github.com/ultralytics/ultralytics.git
