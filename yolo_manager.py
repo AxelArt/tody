@@ -31,9 +31,9 @@ if args.version == 'v5':
     if args.mode == 'train':
         command = f"python models/yolov5/train.py --img {args.img} --batch {args.batch} --epochs {args.epochs} --data {args.dataset} --weights models/yolov5/yolov5s.pt --cache"
     elif args.mode == 'test':
-        command = f"python models/yolov5/detect.py --weights models/yolov5/runs/train/exp/weights/best.pt --source {args.dataset}  --img {args.img} --conf {args.conf}"
+        command = f"python models/yolov5/detect.py --weights {args.weights} --source {args.dataset} --img {args.img} --conf {args.conf}"
     else:
-        command = f"python models/yolov5/val.py --weights models/yolov5/runs/train/exp/weights/last.pt --data {args.dataset} --imgsz {args.img} --task val"
+        command = f"python models/yolov5/val.py --weights {args.weights} --data {args.dataset} --imgsz {args.img} --task val"
 elif args.version == 'v6':
     if args.mode == 'train':
         command = f"python models/yolov6/tools/train.py --img-size {args.img} --batch {args.batch} --epochs {args.epochs} --data {args.dataset} --conf configs/yolov6s.py"
