@@ -38,7 +38,7 @@ elif args.version == 'v6':
     if args.mode == 'train':
         command = f"python models/yolov6/tools/train.py --img-size {args.img} --batch {args.batch} --epochs {args.epochs} --data {args.dataset} --conf configs/yolov6s.py"
     elif args.mode == 'test':
-        command = f"python models/yolov6/tools/infer.py --yaml {args.dataset} --weights {args.weight} --source {args.source}  --img-size {args.img}"
+        command = f"python models/yolov6/tools/infer.py --yaml {args.dataset} --weights {args.weights} --source {args.source}  --img-size {args.img}"
     else:
         command = f"python models/yolov6/tools/eval.py --weights {args.weight} --data {args.dataset} --img-size {args.img}"
 elif args.version == 'v7':

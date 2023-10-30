@@ -12,20 +12,19 @@ Clone the project
 git clone https://github.com/AxelArt/tody.git
 ```
 
-Run the following commands on your Colab notebook
+Run the following command on your Colab notebook to start the submodules and install all depedencies
 
 ```commandline
-git submodule init
-git submodule update
+bash setup.sh
 ```
 
-Install dependencies for YOLOv5
+Or install dependencies only for a specific model ex: YOLOv5
 
 ```commandline
 pip install -qr models/yolov5/requirements.txt roboflow 
 ```
 
-Start training process using YOLOv5
+Type yolo_manager.py --help
 
 ```commandline
 python yolo_manager.py --help
@@ -46,11 +45,27 @@ Arguments:
   --batch BATCH_SIZE
   --epochs EPOCHS
                 number of epochs
+   --weights WEIGHTS
+                the path to the saved weights
   
 ```
-Example:
+Start training process using YOLOv5 and a custom ataset as an example:
 ```
-python yolo_manager.py --version v5 --mode train --dataset /content/tody/yolov5/data/coco.yaml --epochs 30 --img 640
+python yolo_manager.py --version v5 --mode train --dataset {dataset.location}/data.yaml 
+--epochs 30 --img 100
+```
+
+For validation process using YOLOv5 as an example
+
+```
+python yolo_manager.py --version v5 --mode val --img 100 --dataset {dataset.location}/data.yaml 
+--weights <path_to_weights>
+```
+
+To run test process using YOLOv5 as an example
+
+```
+python yolo_manager.py --version v5 --mode test --img 100 --conf 0.25 --dataset {dataset.location}/test/images --weights <path_to_weights>
 ```
 
 ### Acknowledgements
