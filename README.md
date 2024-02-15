@@ -67,6 +67,14 @@ To run test process using YOLOv5 as an example
 ```
 python yolo_manager.py --version v5 --mode test --img 100 --conf 0.25 --dataset {dataset.location}/test/images --weights <path_to_weights>
 ```
+Before start training be sure that you have updated the path on data.yaml. An exammle bellow for yolov6
+
+```commandline
+test: /content/tody/models/yolov6/utility-meter-reading-dataset-for-automatic-reading-yolo-1/images/test
+train: /content/tody/models/yolov6/utility-meter-reading-dataset-for-automatic-reading-yolo-1/images/train
+val: /content/tody/models/yolov6/utility-meter-reading-dataset-for-automatic-reading-yolo-1/images/valid
+```
+
 
 ### Acknowledgements
 
