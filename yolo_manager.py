@@ -23,6 +23,8 @@ parser.add_argument('--source', type=str, required=False,
                     help='')
 parser.add_argument('--weights', type=str, required=False,
                     help='')
+parser.add_argument('--yaml', type=str, required=False,
+                    help='')
 # Parse the command-line arguments
 args = parser.parse_args()
 
@@ -36,11 +38,11 @@ if args.version == 'v5':
         command = f"python models/yolov5/val.py --weights {args.weights} --data {args.dataset} --imgsz {args.img} --task val"
 elif args.version == 'v6':
     if args.mode == 'train':
-        command = f"python models/yolov6/tools/train.py --img-size {args.img} --batch {args.batch} --epochs {args.epochs} --data {args.dataset} --conf configs/yolov6s.py"
+        command = f"python models/yolov6/tools/train.py --img-size {args.img} --batch {args.batch} --epochs {args.epochs} --data {args.dataset} --conf models/yolov6/configs/yolov6s.py"
     elif args.mode == 'test':
-        command = f"python models/yolov6/tools/infer.py --yaml {args.dataset} --weights {args.weights} --source {args.source}  --img-size {args.img}"
+        command = f"python models/yolov6/tools/infer.py --yaml {args.dataset} --weights {args.weights} --source {args.source}  --img-size {args.img} --yaml {args.yaml}"
     else:
-        command = f"python models/yolov6/tools/eval.py --weights {args.weight} --data {args.dataset} --img-size {args.img}"
+        command = f"python models/yolov6/tools/eval.py --weights {args.weights} --data {args.dataset} --img-size {args.img}"
 elif args.version == 'v7':
     if args.mode == 'train':
         command = f"python models/yolov7/train.py --img-size {args.img} --batch-size {args.batch} --epochs {args.epochs} --data {args.dataset} --weights models/yolov7/yolov7_training.pt"
